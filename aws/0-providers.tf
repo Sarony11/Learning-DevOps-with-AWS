@@ -5,9 +5,10 @@ provider "aws" {
 }
 
 # Configure GitHub account
-provider "github" {
+/* provider "github" {
 
     owner = "moodysanalytics"
     token = var.github_token
 
 }
+ */
