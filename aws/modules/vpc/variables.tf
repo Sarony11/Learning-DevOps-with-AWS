@@ -1,7 +1,6 @@
 variable "infra_env" {
     type = string
     description = "infrastructure environment"
-    default = "dev"
 }
 
 variable "vpc_cidr" {

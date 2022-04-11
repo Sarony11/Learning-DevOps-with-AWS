@@ -38,7 +38,15 @@ This will create the bucket.
 ### 3. Creating VPC and subnets
 The next step is to create the VPC and the subnets. We want to create a VPC with 2 public subnets (subnets with internet access) and 2 private subnets (subnets with no internet connectivity)
 
+To do it, we will create a terraform module.
+
 Resources:
 - [What is a cidr](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 - [Visual Subnet Calculator](https://www.davidc.net/sites/default/subnets/subnets.html)
 - [Creating module for VPC and subnets](https://www.youtube.com/watch?v=IpN0ZiXmufM)
+- [What are VPCs in AWS youtube list explained by CloudCast](https://www.youtube.com/watch?v=Ix58fYcnbVc&list=PLI8rNSktL2DRJ-NtEYS4wT3OEGqxLtwBY)
+
+#### 3.1 Creating a VPC
+The VPC is the main element that will contain the subnets. For now, we are going to hardcode the VPC cidr to be "10.0.0.0/17" and environment to "dev" in our [1-vpc.tf](https://github.com/Sarony11/Learning-DevOps-with-AWS/blob/main/aws/1-vpc.tf).
+
+To find where is the module, we specify the route in the 

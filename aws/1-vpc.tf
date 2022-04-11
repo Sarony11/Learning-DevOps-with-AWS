@@ -1,6 +1,6 @@
 module "vpc" {
     source = "./modules/vpc"
 
-    infra_env = "dev"
-    vpc_cidr = "10.0.0.0/17"
+    infra_env = var.infra_env
+    vpc_cidr = var.vpc_cidr
 }
