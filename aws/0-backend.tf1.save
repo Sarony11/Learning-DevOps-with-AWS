@@ -1,0 +1,12 @@
+terraform {
+
+    backend "s3" {
+
+        profile = "sarony11"
+        region  = "us-east-1"
+        bucket  = "sarony11-learning-devops-with-aws-tf-states"
+        key     = "products/aws.tfstate"
+
+    }
+
+}

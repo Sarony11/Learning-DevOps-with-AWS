@@ -34,3 +34,11 @@ terraform apply
 This will create the bucket.
  #### 2.2 Create the backend & encrypt it
  https://www.youtube.com/watch?v=QHfI3NRedIg
+
+### 3. Creating VPC and subnets
+The next step is to create the VPC and the subnets. We want to create a VPC with 2 public subnets (subnets with internet access) and 2 private subnets (subnets with no internet connectivity)
+
+Resources:
+- [What is a cidr](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+- [Visual Subnet Calculator](https://www.davidc.net/sites/default/subnets/subnets.html)
+- [Creating module for VPC and subnets](https://www.youtube.com/watch?v=IpN0ZiXmufM)
