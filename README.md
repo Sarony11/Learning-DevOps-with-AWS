@@ -2,6 +2,25 @@
 This repor contains freelabs for setting up an entire workflow and DevOps environment from a real-world perspective in AWS. Repo based on https://github.com/AWS-Devops-Projects/DevOps-The-Hard-Way-AWS.
 
 ## Techonology Stack
+### 1 AWS
+AWS will be our cloud plataform where to build the whole infrastructure. We are going to use resources like VPCs, subnets, ECR, IAM roles&policies and finally, a EKS cluster.
+
+But we are not going to enter to the AWS console but to use the CLI though Terraform to build the whole project.
+
+### 2 Terraform
+Terraform is going to be our IaaC application. Using Terraform we are going to keep track of changes, state and we are going to deploy all the infrastructure though this impressibe tool.
+
+### 3 Github
+Github will be our source of truth and where we are going to push all changes regarding terraform, docker, kubernetes code and the **main stone to automate CI/DD though Github Actions**.
+
+### 4 Docker
+We are going to use docker to create our Docker image and we will store it making use of ECR in AWS.
+
+### 5 Kubernetes
+Kubernetes will be used to run our Docker image. In this case, we will use EKS as the infrastructure where to orchestrate the container.
+
+### 8 Testing automation
+Finally, we are going to also apply an automatic terraform code testing app called Checkov. This will help us to keep our terraform code verified.
 
 ## Step by Step
 ### 1. Terraform and AWS configuration
