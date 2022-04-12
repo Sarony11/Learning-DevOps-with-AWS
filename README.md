@@ -1,6 +1,25 @@
 # Learning-DevOps-with-AWS
 This repor contains freelabs for setting up an entire workflow and DevOps environment from a real-world perspective in AWS. Repo based on https://github.com/AWS-Devops-Projects/DevOps-The-Hard-Way-AWS.
 
+## Purpose
+The main goal of this project is to understand how to use the different application stack used in any company making use of DevOps practices. We will only work on this project from the architecture, infrastructure point of view, abstracting us from the code (this will be given by developoers, not made from us).
+
+The final purpose is to feel confidence facing new working project as IaaC deployed in Cloud and using containerized applications.
+## Scenario
+You are the main DevOps Engineer in charge of a company who is facing a transformation from very monolithic application to a more microservices architecture.
+
+You have been requested to start this transition migrating to microservices a simple fronted app that logs agains an API login service. You will be on charge the provide the networking architecture, build the microservice infrastructure and deploy the containerized app everything though a CI/CD pipeline and managing all those componentes as code.
+## Application
+The solution is to deploy the Uber API for the sign-up page. Currently this solution is sitting on a bunch of baremetal, but it's time to sprinkle a little DevOps on it.
+
+https://github.com/AWS-Devops-Projects/DevOps-The-Hard-Way-AWS/raw/main/images/uber.png
+
+As a DevOps Engineer, you're more or less (most likely) not writing the app, but instead, deploying it. That's why you're not writing your own app in this tutorial.
+
+Full Disclosure - I did have to edit this app a bit from Uber to make it compatible with Python3. You can find the repo here:
+
+https://github.com/AdminTurnedDevOps/Python-Sample-Application
+
 ## Techonology Stack
 ### 1 AWS
 AWS will be our cloud plataform where to build the whole infrastructure. We are going to use resources like VPCs, subnets, ECR, IAM roles&policies and finally, a EKS cluster.
