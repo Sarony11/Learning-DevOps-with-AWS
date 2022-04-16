@@ -1,5 +1,5 @@
-module "ec2-instance" {
-    source = "./modules/ec2"
+/* module "ec2-instance" {
+    source = "../modules/ec2"
 
     infra_env = var.infra_env
     infra_role = "web"
@@ -7,4 +7,4 @@ module "ec2-instance" {
     instance_type = "t2.micro"
     instance_root_volume_size = "8"
 
-}
+} */

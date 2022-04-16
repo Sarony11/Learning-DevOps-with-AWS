@@ -1,8 +1,22 @@
+/* terraform {
+
+    backend "s3" {
+
+        profile = var.aws_profile
+        region  = var.aws_region
+        bucket  = var.backend_bucket
+        key     = "${var.backend_bucket_key}/terraform.tfstate"
+        dynamodb_table = "terraform-state-locking"
+        encrypt = true
+    }
+
+}
+
 resource "aws_s3_bucket" "tf-state-bucket"{
     bucket = "sarony11-tfstates-638492"
 
     lifecycle {
-        prevent_destroy = true
+        prevent_destroy = false
     }
 
     versioning {
@@ -27,4 +41,4 @@ resource "aws_dynamodb_table" "terraform_locks" {
         name = "LockID"
         type = "S"
     }
-}
+} */

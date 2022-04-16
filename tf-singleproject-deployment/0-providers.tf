@@ -1,7 +1,7 @@
 # Configure the AWS Provider
 provider "aws" {
   profile = var.aws_profile
-  region  = var.aws_region
+  region = var.aws_region
 }
 
 # Configure GitHub account

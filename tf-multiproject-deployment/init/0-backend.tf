@@ -1,11 +1,11 @@
-/* terraform {
+terraform {
 
     backend "s3" {
 
         profile = var.aws_profile
         region  = var.aws_region
         bucket  = var.backend_bucket
-        key     = "repo/personal/learning-devops-with-aws/terraform.tfstate"
+        key     = "${var.backend_bucket_key}/terraform.tfstate"
         dynamodb_table = "terraform-state-locking"
         encrypt = true
     }
@@ -41,4 +41,4 @@ resource "aws_dynamodb_table" "terraform_locks" {
         name = "LockID"
         type = "S"
     }
-} */
+}

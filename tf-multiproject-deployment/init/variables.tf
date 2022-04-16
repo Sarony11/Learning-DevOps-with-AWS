@@ -14,6 +14,21 @@ variable "infra_env" {
     description = "Infrastructure environment"
 }
 
+variable "project_name" {
+    type = string
+    description = "Project name"
+}
+
+variable "backend_bucket" {
+    type = string
+    description = "S3 bucket to store Terraform state"
+}
+
+variable "backend_bucket_key" {
+    type = string
+    description = "S3 key to store Terraform state"
+}
+
 variable "vpc_cidr" {
     type = string
     description = "The IP range to use for the VPC"

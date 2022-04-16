@@ -1,0 +1,17 @@
+{
+    "name": "aws-devops",
+    "description": "AWS DevOps",
+    "repository": "https://github.com/Sarony11/Learning-DevOps-with-AWS",
+    "author": "Saul Fernandez",
+    "environment":  [
+        {
+            "dev": [
+                {
+                    "name": "dev",
+                    "aws_profile": "sarony11",
+                    "aws_region": "us-east-1"
+                }
+            ]
+        }
+    ]
+}
