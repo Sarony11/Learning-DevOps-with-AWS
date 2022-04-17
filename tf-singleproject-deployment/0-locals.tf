@@ -5,5 +5,4 @@ locals {
     infra_env = "dev"
     aws_profile = local.config["project"]["environment"][local.infra_env]["aws"]["profile"]
     aws_region = local.config["project"]["environment"][local.infra_env]["aws"]["region"]
-    vpc_cidr = local.config["project"]["environment"][local.infra_env]["module"]["network"]["vpc"]
 }
