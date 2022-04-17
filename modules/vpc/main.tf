@@ -3,10 +3,11 @@ resource "aws_vpc" "aws-devops-vpc" {
     cidr_block = var.vpc_cidr
 
     tags = {
-        Name = "${var.project_name}-${var.infra_env}-vpc"
-        Project = "https://github.com/Sarony11/Learning-DevOps-with-AWS"
-        Environment = var.infra_env
-        ManagedBy = "terraform"
+      "Name" = "${local.project_name}-${local.infra_env}-vpc"
+      "Project" = local.project_name
+      "Repository" = local.repo
+      "Environment" = var.infra_env
+      "ManagedBy" = "terraform"
     }
 }
 
@@ -17,8 +18,9 @@ resource "aws_subnet" "public" {
     
     cidr_block = cidrsubnet(aws_vpc.aws-devops-vpc.cidr_block, 4, each.value )
     tags = {
-      "Name" = "${var.project_name}-${var.infra_env}-public-subnet"
-      "Project" = "https://github.com/Sarony11/Learning-DevOps-with-AWS"
+      "Name" = "${local.project_name}-${local.infra_env}-public-subnet"
+      "Project" = local.project_name
+      "Repository" = local.repo
       "Role" = "public"
       "Environment" = var.infra_env
       "ManagedBy" = "terraform"
@@ -34,8 +36,9 @@ resource "aws_subnet" "private" {
     
     cidr_block = cidrsubnet(aws_vpc.aws-devops-vpc.cidr_block, 4, each.value )
     tags = {
-      "Name" = "${var.project_name}-${var.infra_env}-private-subnet"
-      "Project" = "https://github.com/Sarony11/Learning-DevOps-with-AWS"
+      "Name" = "${local.project_name}-${local.infra_env}-private-subnet"
+      "Project" = local.project_name
+      "Repository" = local.repo
       "Role" = "private"
       "Environment" = var.infra_env
       "ManagedBy" = "terraform"
