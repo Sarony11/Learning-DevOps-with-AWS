@@ -1,17 +1,33 @@
 {
-    "name": "aws-devops",
-    "description": "AWS DevOps",
-    "repository": "https://github.com/Sarony11/Learning-DevOps-with-AWS",
-    "author": "Saul Fernandez",
-    "environment":  [
-        {
-            "dev": [
-                {
-                    "name": "dev",
-                    "aws_profile": "sarony11",
-                    "aws_region": "us-east-1"
-                }
-            ]
-        }
-    ]
-}
+    "project": {
+      "name": "aws-devops",
+      "description": "Repot to learn how to deploy using Terraform in AWS",
+      "repository": "https://github.com/Sarony11/Learning-DevOps-with-AWS",
+      "author": "Saul Fernandez",
+      "environment":
+      {
+        "dev": {
+          "aws": {
+            "profile": "sarony11",
+            "region": "us-east-1"
+          },
+          "module": {
+                "network": {
+                  "vpc": "10.0.0.0/17"
+                },
+        "prod": {
+          "aws": {
+            "profile": "sarony11",
+            "region": "us-east-1"
+          },
+          "module": {
+                "network": {
+                  "vpc": "172.10.0.0/17"
+                },
+      "app": {
+              "name": "uber-login-api",
+              "language": "python",
+              "role": "web-fronted"
+            }
+   }
+  }}}}}}
