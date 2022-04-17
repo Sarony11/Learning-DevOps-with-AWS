@@ -18,7 +18,7 @@ resource "aws_subnet" "public" {
     
     cidr_block = cidrsubnet(aws_vpc.aws-devops-vpc.cidr_block, 4, each.value )
     tags = {
-      "Name" = "${local.project_name}-${local.infra_env}-public-subnet"
+      "Name" = "${local.project_name}-${local.infra_env}-public-subnet-${each.value}"
       "Project" = local.project_name
       "Repository" = local.repo
       "Role" = "public"
@@ -36,7 +36,7 @@ resource "aws_subnet" "private" {
     
     cidr_block = cidrsubnet(aws_vpc.aws-devops-vpc.cidr_block, 4, each.value )
     tags = {
-      "Name" = "${local.project_name}-${local.infra_env}-private-subnet"
+      "Name" = "${local.project_name}-${local.infra_env}-private-subnet-${each.value}"
       "Project" = local.project_name
       "Repository" = local.repo
       "Role" = "private"

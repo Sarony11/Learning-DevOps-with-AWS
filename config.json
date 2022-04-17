@@ -15,6 +15,9 @@
                 "network": {
                   "vpc": "10.0.0.0/17"
                 },
+                "eks": {
+                  "instance_type": "t2.small"
+                },
         "prod": {
           "aws": {
             "profile": "sarony11",
