@@ -1,3 +1,13 @@
+variable "project_name" {
+    type = string
+    description = "project name"
+}
+
+variable "project_repo" {
+    type = string
+    description = "project repository"
+}
+
 variable "infra_env" {
     type = string
     description = "infrastructure environment"

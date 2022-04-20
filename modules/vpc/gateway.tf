@@ -3,8 +3,9 @@ resource "aws_internet_gateway" "aws-devops-igw" {
     vpc_id = aws_vpc.aws-devops-vpc.id
 
     tags = {
-        Name = "aws-devops-${var.infra_env}-igw"
-        Project = "https://github.com/Sarony11/Learning-DevOps-with-AWS"
+        Name = "${var.project_name}-${var.infra_env}-eip"
+        Project = var.project_name
+        Repository = var.project_repo
         Environment = var.infra_env
         VPC = aws_vpc.aws-devops-vpc.id
         ManagedBy = "terraform"
@@ -21,8 +22,9 @@ resource "aws_eip" "aws-devops-nat-eip" {
     } */
 
     tags = {
-        Name = "aws-devops-${var.infra_env}-eip"
-        Project = "https://github.com/Sarony11/Learning-DevOps-with-AWS"
+        Name = "${var.project_name}-${var.infra_env}-eip"
+        Project = var.project_name
+        Repository = var.project_repo
         Environment = var.infra_env
         VPC = aws_vpc.aws-devops-vpc.id
         ManagedBy = "terraform"
@@ -36,8 +38,9 @@ resource "aws_nat_gateway" "aws-devops-ngw" {
     subnet_id = aws_subnet.public[element(keys(aws_subnet.public), 0)].id
 
     tags = {
-        Name = "aws-devops-${var.infra_env}-ngw"
-        Project = "https://github.com/Sarony11/Learning-DevOps-with-AWS"
+        Name = "${var.project_name}-${var.infra_env}-eip"
+        Project = var.project_name
+        Repository = var.project_repo
         Environment = var.infra_env
         VPC = aws_vpc.aws-devops-vpc.id
         ManagedBy = "terraform"
@@ -50,8 +53,9 @@ resource "aws_route_table" "aws-devops-public-rt" {
     vpc_id = aws_vpc.aws-devops-vpc.id
 
     tags = {
-        Name = "aws-devops-${var.infra_env}-public-rt"
-        Project = "https://github.com/Sarony11/Learning-DevOps-with-AWS"
+        Name = "${var.project_name}-${var.infra_env}-eip"
+        Project = var.project_name
+        Repository = var.project_repo
         Environment = var.infra_env
         VPC = aws_vpc.aws-devops-vpc.id
         ManagedBy = "terraform"
@@ -62,8 +66,9 @@ resource "aws_route_table" "aws-devops-private-rt" {
     vpc_id = aws_vpc.aws-devops-vpc.id
 
     tags = {
-        Name = "aws-devops-${var.infra_env}-private-rt"
-        Project = "https://github.com/Sarony11/Learning-DevOps-with-AWS"
+        Name = "${var.project_name}-${var.infra_env}-eip"
+        Project = var.project_name
+        Repository = var.project_repo
         Environment = var.infra_env
         VPC = aws_vpc.aws-devops-vpc.id
         ManagedBy = "terraform"

@@ -11,7 +11,6 @@
   }
 } */
 
-
 # IAM Role for EKS to have access to the appropriate resources
 resource "aws_iam_role" "eks-iam-role" {
   name = "${var.project_name}-${var.infra_env}-eks-iam-role"
@@ -49,14 +48,11 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly-EK
 resource "aws_eks_cluster" "eks" {
   name = "${var.project_name}-${var.infra_env}-eks-cluster"
   role_arn = aws_iam_role.eks-iam-role.arn
-
+  depends_on = [ aws_iam_role.eks-iam-role ]
   vpc_config {
-    subnet_ids = [data.aws_subnet.public-1.id, data.aws_subnet.public-2.id]
+  #subnet_ids = [ var.subnets_private[ "us-east-1a" ][ 0 ][ "id" ], [ var.subnets_private[ "us-east-1b" ][ 0 ][ "id" ] ] ]
+  subnet_ids = [ data.aws_subnet.public-01.id, data.aws_subnet.public-02.id]
   }
-
-  depends_on = [
-    aws_iam_role.eks-iam-role,
-  ]
 }
 
 ## Worker Nodes
@@ -99,8 +95,8 @@ resource "aws_eks_node_group" "worker-node-group" {
   cluster_name    = aws_eks_cluster.eks.name
   node_group_name = "${var.project_name}-${var.infra_env}-workernodes"
   node_role_arn   = aws_iam_role.workernodes.arn
-  subnet_ids      = [data.aws_subnet.public-1.id, data.aws_subnet.public-2.id]
-  instance_types = [local.instance_type]
+  subnet_ids      = [ data.aws_subnet.private-03.id, data.aws_subnet.private-04.id ]
+  instance_types = [var.instance_type]
 
   scaling_config {
     desired_size = 1

@@ -1,11 +1,11 @@
-variable "subnet_id_1" {
-  type = string
-  default = "subnet-07d002bb7e32b67fc"
+variable "project_name" {
+    type = string
+    description = "project name"
 }
 
-variable "subnet_id_2" {
-  type = string
-  default = "subnet-03c49bbe3a085ef44"
+variable "project_repo" {
+    type = string
+    description = "project repository"
 }
 
 variable "infra_env" {
@@ -13,7 +13,37 @@ variable "infra_env" {
     description = "infrastructure environment"
 }
 
-variable "project_name" {
+variable "instance_type" {
     type = string
-    description = "Project name"
+    description = "EKS instance type"
 }
+
+/* variable "subnet_public-01" {
+    type = string
+    description = "Public Subnet in us-east-1a"
+}
+
+variable "subnet_public-02" {
+    type = string
+    description = "Public Subnet in us-east-1b"
+}
+
+variable "subnet_private-03" {
+    type = string
+    description = "Public Subnet in us-east-1a"
+}
+
+variable "subnet_private-04" {
+    type = string
+    description = "Public Subnet in us-east-1b"
+}
+
+variable "subnets_public" {
+    type = map(string)
+    description = "Set of public subnets"
+}
+
+variable "subnets_private" {
+    type = map(string)
+    description = "Set of private subnets"
+} */

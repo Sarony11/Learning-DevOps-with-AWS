@@ -3,9 +3,9 @@ resource "aws_vpc" "aws-devops-vpc" {
     cidr_block = var.vpc_cidr
 
     tags = {
-      "Name" = "${local.project_name}-${local.infra_env}-vpc"
-      "Project" = local.project_name
-      "Repository" = local.repo
+      "Name" = "${var.project_name}-${var.infra_env}-vpc"
+      "Project" = var.project_name
+      "Repository" = var.project_repo
       "Environment" = var.infra_env
       "ManagedBy" = "terraform"
     }
@@ -18,9 +18,9 @@ resource "aws_subnet" "public" {
     
     cidr_block = cidrsubnet(aws_vpc.aws-devops-vpc.cidr_block, 4, each.value )
     tags = {
-      "Name" = "${local.project_name}-${local.infra_env}-public-subnet-${each.value}"
-      "Project" = local.project_name
-      "Repository" = local.repo
+      "Name" = "${var.project_name}-${var.infra_env}-public-subnet-${each.value}"
+      "Project" = var.project_name
+      "Repository" = var.project_repo
       "Role" = "public"
       "Environment" = var.infra_env
       "ManagedBy" = "terraform"
@@ -36,9 +36,9 @@ resource "aws_subnet" "private" {
     
     cidr_block = cidrsubnet(aws_vpc.aws-devops-vpc.cidr_block, 4, each.value )
     tags = {
-      "Name" = "${local.project_name}-${local.infra_env}-private-subnet-${each.value}"
-      "Project" = local.project_name
-      "Repository" = local.repo
+      "Name" = "${var.project_name}-${var.infra_env}-private-subnet-${each.value}"
+      "Project" = var.project_name
+      "Repository" = var.project_repo
       "Role" = "private"
       "Environment" = var.infra_env
       "ManagedBy" = "terraform"
