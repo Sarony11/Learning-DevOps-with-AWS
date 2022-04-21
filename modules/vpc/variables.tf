@@ -40,3 +40,12 @@ variable "private_subnet_numbers" {
         "us-east-1b" = 4
     }
 }
+
+variable "azs" {
+    type = list(string)
+    description = "List of availability zones"
+    default = [
+        "us-east-1a",
+        "us-east-1b",
+    ]
+}

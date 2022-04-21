@@ -1,4 +1,5 @@
 # resource https://www.youtube.com/watch?v=IpN0ZiXmufM
+
 resource "aws_vpc" "aws-devops-vpc" {
     cidr_block = var.vpc_cidr
 
@@ -17,6 +18,7 @@ resource "aws_subnet" "public" {
     vpc_id = aws_vpc.aws-devops-vpc.id
     
     cidr_block = cidrsubnet(aws_vpc.aws-devops-vpc.cidr_block, 4, each.value )
+    availability_zone = [ "us-east-1a", "us-east-1b" ] ["${each.value}"-1]
     tags = {
       "Name" = "${var.project_name}-${var.infra_env}-public-subnet-${each.value}"
       "Project" = var.project_name
@@ -35,6 +37,7 @@ resource "aws_subnet" "private" {
     vpc_id = aws_vpc.aws-devops-vpc.id
     
     cidr_block = cidrsubnet(aws_vpc.aws-devops-vpc.cidr_block, 4, each.value )
+    availability_zone = [ "us-east-1a", "us-east-1b" ] ["${each.value}"-3]
     tags = {
       "Name" = "${var.project_name}-${var.infra_env}-private-subnet-${each.value}"
       "Project" = var.project_name
