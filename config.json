@@ -13,7 +13,8 @@
           },
           "module": {
                 "network": {
-                  "vpc": "10.0.0.0/17"
+                  "vpc": "10.0.0.0/17",
+                  "az" : 1
                 },
                 "eks": {
                   "instance_type": "t2.small"
