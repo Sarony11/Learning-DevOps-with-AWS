@@ -14,7 +14,7 @@ resource "aws_internet_gateway" "aws-devops-igw" {
 
 # NAT Gateway (NGW) components
 # NAT needs an elastic ip address associated to it. In this code, we define this elasticIP
-resource "aws_eip" "aws-devops-nat-eip" {
+resource "aws_eip" "nat-eip" {
     vpc = true
 
    /*  lifecycle {
@@ -33,8 +33,8 @@ resource "aws_eip" "aws-devops-nat-eip" {
 }
 
 # NAT Gateway (NGW)
-resource "aws_nat_gateway" "aws-devops-ngw" {
-    allocation_id = aws_eip.aws-devops-nat-eip.id
+resource "aws_nat_gateway" "ngw" {
+    allocation_id = aws_eip.nat-eip.id
     subnet_id = aws_subnet.public[element(keys(aws_subnet.public), 0)].id
 
     tags = {
@@ -86,5 +86,5 @@ resource "aws_route" "aws-devops-public-route" {
 resource "aws_route" "aws-devops-private-route" {
     route_table_id = aws_route_table.aws-devops-private-rt.id
     destination_cidr_block = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.aws-devops-ngw.id
+    nat_gateway_id = aws_nat_gateway.ngw.id
 }
