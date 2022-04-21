@@ -1,3 +1,9 @@
+variable "aws_region" {
+    type = string
+    default = "us-east-1"
+    description = "AWS Region"
+}
+
 variable "project_name" {
     type = string
     description = "project name"
@@ -41,11 +47,7 @@ variable "private_subnet_numbers" {
     }
 }
 
-variable "azs" {
-    type = list(string)
-    description = "List of availability zones"
-    default = [
-        "us-east-1a",
-        "us-east-1b",
-    ]
+variable "azs_numbers" {
+    type = number
+    description = "The number of availability zones to create"
 }

@@ -13,8 +13,8 @@
           },
           "module": {
                 "network": {
-                  "vpc": "10.0.0.0/17",
-                  "az" : 1
+                  "vpc_cidr": "10.0.0.0/17",
+                  "az" : 2
                 },
                 "eks": {
                   "instance_type": "t2.small"

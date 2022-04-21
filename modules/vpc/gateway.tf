@@ -1,13 +1,13 @@
 # Internet Gateway (IGW)
-resource "aws_internet_gateway" "aws-devops-igw" {
-    vpc_id = aws_vpc.aws-devops-vpc.id
+resource "aws_internet_gateway" "igw" {
+    vpc_id = aws_vpc.vpc.id
 
     tags = {
         Name = "${var.project_name}-${var.infra_env}-eip"
         Project = var.project_name
         Repository = var.project_repo
         Environment = var.infra_env
-        VPC = aws_vpc.aws-devops-vpc.id
+        VPC = aws_vpc.vpc.id
         ManagedBy = "terraform"
     }
 }
@@ -26,7 +26,7 @@ resource "aws_eip" "nat-eip" {
         Project = var.project_name
         Repository = var.project_repo
         Environment = var.infra_env
-        VPC = aws_vpc.aws-devops-vpc.id
+        VPC = aws_vpc.vpc.id
         ManagedBy = "terraform"
         Role = "private"
     }
@@ -42,49 +42,49 @@ resource "aws_nat_gateway" "ngw" {
         Project = var.project_name
         Repository = var.project_repo
         Environment = var.infra_env
-        VPC = aws_vpc.aws-devops-vpc.id
+        VPC = aws_vpc.vpc.id
         ManagedBy = "terraform"
         Role = "private"
     }
 }
 
 # Route Tables and Routes
-resource "aws_route_table" "aws-devops-public-rt" {
-    vpc_id = aws_vpc.aws-devops-vpc.id
+resource "aws_route_table" "public-rt" {
+    vpc_id = aws_vpc.vpc.id
 
     tags = {
         Name = "${var.project_name}-${var.infra_env}-eip"
         Project = var.project_name
         Repository = var.project_repo
         Environment = var.infra_env
-        VPC = aws_vpc.aws-devops-vpc.id
+        VPC = aws_vpc.vpc.id
         ManagedBy = "terraform"
     }
 }
 
-resource "aws_route_table" "aws-devops-private-rt" {
-    vpc_id = aws_vpc.aws-devops-vpc.id
+resource "aws_route_table" "private-rt" {
+    vpc_id = aws_vpc.vpc.id
 
     tags = {
         Name = "${var.project_name}-${var.infra_env}-eip"
         Project = var.project_name
         Repository = var.project_repo
         Environment = var.infra_env
-        VPC = aws_vpc.aws-devops-vpc.id
+        VPC = aws_vpc.vpc.id
         ManagedBy = "terraform"
     }
 }
 
 # Public Route
-resource "aws_route" "aws-devops-public-route" {
-    route_table_id = aws_route_table.aws-devops-public-rt.id
+resource "aws_route" "public-route" {
+    route_table_id = aws_route_table.public-rt.id
     destination_cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.aws-devops-igw.id
+    gateway_id = aws_internet_gateway.igw.id
 }
 
 # Private Route
-resource "aws_route" "aws-devops-private-route" {
-    route_table_id = aws_route_table.aws-devops-private-rt.id
+resource "aws_route" "route" {
+    route_table_id = aws_route_table.private-rt.id
     destination_cidr_block = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.ngw.id
 }

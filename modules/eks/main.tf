@@ -50,7 +50,7 @@ resource "aws_eks_cluster" "eks" {
   role_arn = aws_iam_role.eks-iam-role.arn
   depends_on = [ aws_iam_role.eks-iam-role ]
   vpc_config {
-  #subnet_ids = [ var.subnets_private[ "us-east-1a" ][ 0 ][ "id" ], [ var.subnets_private[ "us-east-1b" ][ 0 ][ "id" ] ] ]
+  # subnet_ids = [ var.subnets_private[ "us-east-1a" ][ 0 ][ "id" ], [ var.subnets_private[ "us-east-1b" ][ 0 ][ "id" ] ] ]
   subnet_ids = [ data.aws_subnet.public-01.id, data.aws_subnet.public-02.id]
   }
 }
