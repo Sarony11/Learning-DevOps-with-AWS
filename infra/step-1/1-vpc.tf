@@ -6,5 +6,4 @@ module "vpc" {
     infra_env = local.infra_env
     project_repo = local.project_repo
     vpc_cidr = local.vpc_cidr
-    azs_numbers = local.azs_numbers
 }

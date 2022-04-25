@@ -17,5 +17,4 @@ locals {
     
     # VPC and Subnets
     vpc_cidr = local.config["project"]["environment"][local.infra_env]["module"]["network"]["vpc_cidr"]
-    azs_numbers = local.config["project"]["environment"][local.infra_env]["module"]["network"]["az"]
 }
