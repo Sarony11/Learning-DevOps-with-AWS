@@ -46,8 +46,3 @@ variable "private_subnet_numbers" {
         "us-east-1b" = 4
     }
 }
-
-variable "azs_numbers" {
-    type = number
-    description = "The number of availability zones to create"
-}

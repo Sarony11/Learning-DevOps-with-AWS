@@ -16,10 +16,12 @@ resource "aws_internet_gateway" "igw" {
 # NAT needs an elastic ip address associated to it. In this code, we define this elasticIP
 resource "aws_eip" "nat-eip" {
     vpc = true
-
-   /*  lifecycle {
+    depends_on = [
+      aws_internet_gateway.igw
+    ]
+   /* lifecycle {
       prevent_destroy = true
-    } */
+    }  */
 
     tags = {
         Name = "${var.project_name}-${var.infra_env}-eip"
@@ -51,9 +53,13 @@ resource "aws_nat_gateway" "ngw" {
 # Route Tables and Routes
 resource "aws_route_table" "public-rt" {
     vpc_id = aws_vpc.vpc.id
-
+    route {
+        # Public route to the internet
+        cidr_block = "0.0.0.0/0"
+        gateway_id = aws_internet_gateway.igw.id
+  }
     tags = {
-        Name = "${var.project_name}-${var.infra_env}-eip"
+        Name = "${var.project_name}-${var.infra_env}-public-eip"
         Project = var.project_name
         Repository = var.project_repo
         Environment = var.infra_env
@@ -64,9 +70,13 @@ resource "aws_route_table" "public-rt" {
 
 resource "aws_route_table" "private-rt" {
     vpc_id = aws_vpc.vpc.id
-
+    route {
+        # Private route to the NAT gateway
+        cidr_block = "0.0.0.0/0"
+        nat_gateway_id = aws_nat_gateway.ngw.id
+    }
     tags = {
-        Name = "${var.project_name}-${var.infra_env}-eip"
+        Name = "${var.project_name}-${var.infra_env}-private-eip"
         Project = var.project_name
         Repository = var.project_repo
         Environment = var.infra_env
@@ -75,16 +85,7 @@ resource "aws_route_table" "private-rt" {
     }
 }
 
-# Public Route
-resource "aws_route" "public-route" {
-    route_table_id = aws_route_table.public-rt.id
-    destination_cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
-}
-
-# Private Route
-resource "aws_route" "route" {
-    route_table_id = aws_route_table.private-rt.id
-    destination_cidr_block = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.ngw.id
+resource "aws_main_route_table_association" "a" {
+  vpc_id         = aws_vpc.vpc.id
+  route_table_id = aws_route_table.public-rt.id
 }
