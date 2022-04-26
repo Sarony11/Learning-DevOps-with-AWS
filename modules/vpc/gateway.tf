@@ -85,7 +85,7 @@ resource "aws_route_table" "private-rt" {
     }
 }
 
-resource "aws_main_route_table_association" "a" {
+resource "aws_main_route_table_association" "principal_public_route_table_association" {
   vpc_id         = aws_vpc.vpc.id
   route_table_id = aws_route_table.public-rt.id
 }

@@ -11,7 +11,7 @@ locals {
     
     # Terraform State Backend
     bucket_name = "${local.project_name}-${local.infra_env}-tfstate"
-    bucket_key = "init-terraform.tfstate"
+    bucket_key = "step1-terraform.tfstate"
     # ECR Registry
     ecr_repo_name = "${local.project_name}-${local.infra_env}-ecr"
     
