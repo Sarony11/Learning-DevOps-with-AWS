@@ -95,3 +95,8 @@ In this section we are going to build and create a docker image which is going t
 - [Adding the code repo a a submodule](https://github.com/Sarony11/Learning-DevOps-with-AWS/blob/main/docker/1.add%20submodule.md)
 - [Creating and building the docker image](https://github.com/Sarony11/Learning-DevOps-with-AWS/blob/main/docker/2.creating%20docker%20image.md)
 - [Pushing the image to AWS ECR](https://github.com/Sarony11/Learning-DevOps-with-AWS/blob/main/docker/3.push%20image%20to%20ECR.md)
+
+## Kubernetes
+In this section we are going to connect with the EKS cluster created with terraform and deploy our Docker image pushed in our AWS ECR.
+- Connect to EKS from terminal
+- Create kubernetes manifest
