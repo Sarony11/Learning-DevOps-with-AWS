@@ -48,10 +48,12 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly-EK
 resource "aws_eks_cluster" "eks" {
   name = "${var.project_name}-${var.infra_env}-eks-cluster"
   role_arn = aws_iam_role.eks-iam-role.arn
+  version = "1.22"
   depends_on = [ aws_iam_role.eks-iam-role ]
   vpc_config {
-  # subnet_ids = [ var.subnets_private[ "us-east-1a" ][ 0 ][ "id" ], [ var.subnets_private[ "us-east-1b" ][ 0 ][ "id" ] ] ]
-  subnet_ids = [ data.aws_subnet.public-01.id, data.aws_subnet.public-02.id]
+    subnet_ids = [ data.aws_subnet.public-01.id, data.aws_subnet.public-02.id]
+    endpoint_private_access = false
+    endpoint_public_access = true
   }
 }
 
@@ -95,18 +97,19 @@ resource "aws_eks_node_group" "worker-node-group" {
   cluster_name    = aws_eks_cluster.eks.name
   node_group_name = "${var.project_name}-${var.infra_env}-workernodes"
   node_role_arn   = aws_iam_role.workernodes.arn
-  subnet_ids      = [ data.aws_subnet.private-03.id, data.aws_subnet.private-04.id ]
-  instance_types = [var.instance_type]
+  #subnet_ids      = [ data.aws_subnet.private-03.id, data.aws_subnet.private-04.id ]
+  subnet_ids = [ data.aws_subnet.public-01.id, data.aws_subnet.public-02.id]
 
+  instance_types = [ var.instance_type ]
   scaling_config {
     desired_size = 1
-    max_size     = 3
+    max_size     = 2
     min_size     = 1
   }
 
   depends_on = [
     aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy,
-    #aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly,
+    aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly,
   ]
 }
