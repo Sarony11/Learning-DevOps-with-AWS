@@ -13,7 +13,7 @@ locals {
     bucket_name = "${local.project_name}-${local.infra_env}-tfstate"
     bucket_key = "step1-terraform.tfstate"
     # ECR Registry
-    ecr_repo_name = "${local.project_name}-${local.infra_env}-ecr"
+    ecr_repo_name = "${local.project_name}-${local.infra_env}-uberapp"
     
     # VPC and Subnets
     vpc_cidr = local.config["project"]["environment"][local.infra_env]["module"]["network"]["vpc_cidr"]
