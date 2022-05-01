@@ -103,4 +103,4 @@ In this section we are going to connect with the EKS cluster created with terraf
 
 ## Automated testing
 The purpose of the Automation Testing section is to ensure that all of the Terraform code is performing as it should be from a policy, security, and static code analysis perspective.
-- [Install And run Checkov]
+- [Install And run Checkov](https://github.com/Sarony11/Learning-DevOps-with-AWS/blob/main/automated-testing/1.Install%20and%20run%20checkov.md)
