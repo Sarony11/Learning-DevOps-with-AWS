@@ -14,6 +14,7 @@ resource "aws_vpc" "vpc" {
 resource "aws_subnet" "public" {
     for_each = var.public_subnet_numbers
     vpc_id = aws_vpc.vpc.id
+    map_public_ip_on_launch = true
     cidr_block = cidrsubnet(aws_vpc.vpc.cidr_block, 4, each.value )
     availability_zone = data.aws_availability_zones.azs.names["${each.value}"-1]
     tags = {
