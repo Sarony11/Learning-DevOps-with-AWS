@@ -100,3 +100,7 @@ In this section we are going to build and create a docker image which is going t
 In this section we are going to connect with the EKS cluster created with terraform and deploy our Docker image pushed in our AWS ECR.
 - [Connect to EKS from terminal](https://github.com/Sarony11/Learning-DevOps-with-AWS/blob/main/kubernetes/1.connect%20to%20EKS%20cluster.md)
 - [Create kubernetes manifest](https://github.com/Sarony11/Learning-DevOps-with-AWS/blob/main/kubernetes/2.create%20kubernetes%20manifest.md)
+
+## Automated testing
+The purpose of the Automation Testing section is to ensure that all of the Terraform code is performing as it should be from a policy, security, and static code analysis perspective.
+- [Install And run Checkov]
