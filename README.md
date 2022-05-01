@@ -88,3 +88,10 @@ Resources:
 The VPC is the main element that will contain the subnets. For now, we are going to hardcode the VPC cidr to be "10.0.0.0/17" and environment to "dev" in our [1-vpc.tf](https://github.com/Sarony11/Learning-DevOps-with-AWS/blob/main/aws/1-vpc.tf).
 
 To find where is the module, we specify the route in the 
+
+
+## Docker
+In this section we are going to build and create a docker image which is going to contain our app code using a Dockerfile. Later, we will update this image to our AWS ECR preciously created repository.
+- Adding the code repo a a submodule
+- Creating and building the docker image
+- Pushing the image to AWS ECR
