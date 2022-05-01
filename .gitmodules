@@ -1,0 +1,3 @@
+[submodule "docker/Python-Sample-Application"]
+	path = docker/Python-Sample-Application
+	url = https://github.com/AdminTurnedDevOps/Python-Sample-Application
