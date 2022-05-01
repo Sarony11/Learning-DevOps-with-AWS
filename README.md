@@ -92,6 +92,6 @@ To find where is the module, we specify the route in the
 
 ## Docker
 In this section we are going to build and create a docker image which is going to contain our app code using a Dockerfile. Later, we will update this image to our AWS ECR preciously created repository.
-- Adding the code repo a a submodule
-- Creating and building the docker image
-- Pushing the image to AWS ECR
+- [Adding the code repo a a submodule](https://github.com/Sarony11/Learning-DevOps-with-AWS/blob/main/docker/1.add%20submodule.md)
+- [Creating and building the docker image](https://github.com/Sarony11/Learning-DevOps-with-AWS/blob/main/docker/2.creating%20docker%20image.md)
+- [Pushing the image to AWS ECR](https://github.com/Sarony11/Learning-DevOps-with-AWS/blob/main/docker/3.push%20image%20to%20ECR.md)
