@@ -97,8 +97,8 @@ resource "aws_eks_node_group" "worker-node-group" {
   cluster_name    = aws_eks_cluster.eks.name
   node_group_name = "${var.project_name}-${var.infra_env}-workernodes"
   node_role_arn   = aws_iam_role.workernodes.arn
-  #subnet_ids      = [ data.aws_subnet.private-03.id, data.aws_subnet.private-04.id ]
-  subnet_ids = [ data.aws_subnet.public-01.id, data.aws_subnet.public-02.id]
+  subnet_ids      = [ data.aws_subnet.private-03.id, data.aws_subnet.private-04.id ]
+  #subnet_ids = [ data.aws_subnet.public-01.id, data.aws_subnet.public-02.id]
 
   instance_types = [ var.instance_type ]
   scaling_config {

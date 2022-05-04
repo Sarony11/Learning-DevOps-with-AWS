@@ -1,7 +1,7 @@
 {
     "project": {
       "name": "aws-devops",
-      "description": "Repot to learn how to deploy using Terraform in AWS",
+      "description": "Repo to learn how to deploy using Terraform in AWS",
       "repository": "https://github.com/Sarony11/Learning-DevOps-with-AWS",
       "author": "Saul Fernandez",
       "environment":
